@@ -2,8 +2,8 @@ package ru.netology.domain;
 
 public class FilmManager {
     private int currentCountFilm = 10;
-
-    private PurchaseItem[] items = new PurchaseItem[0];
+    private int limitCountFilm = 10;
+    private FilmItem[] items = new FilmItem[0];
 
     public FilmManager(int currentCountFilm) {
           this.currentCountFilm = currentCountFilm;
@@ -12,38 +12,35 @@ public class FilmManager {
     public FilmManager() {
     }
 
-    public void add(PurchaseItem item) {
+    public void add(FilmItem item) {
         int length = items.length + 1;
-        PurchaseItem[] tmp = new PurchaseItem[length];
+        FilmItem[] tmp = new FilmItem[length];
         System.arraycopy(items, 0, tmp, 0, items.length);
         int lastIndex = tmp.length - 1;
         tmp[lastIndex] = item;
         items = tmp;
     }
 
-    public PurchaseItem[] findAll() {
+    public FilmItem[] findAll() {
         return items;
     }
 
-    public PurchaseItem[] getAll() {
+    public FilmItem[] getAll() {
 
         int resultLength;
-         if (currentCountFilm < 10) {
+         if (currentCountFilm >= 0 && currentCountFilm < limitCountFilm) {
              resultLength = currentCountFilm;
          }
          else {
-             resultLength = 10;
+             resultLength = limitCountFilm;
          }
-        PurchaseItem[] result = new PurchaseItem[resultLength];
+        FilmItem[] result = new FilmItem[resultLength];
         for (int i = 0; i < result.length; i++) {
             int index = items.length - i - 1;
             result[i] = items[index];
         }
         return result;
     }
-
-
-
 }
 
 

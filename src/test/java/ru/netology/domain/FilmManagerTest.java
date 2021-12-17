@@ -6,30 +6,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FilmManagerTest {
     private FilmManager filmManager = new FilmManager();
-    private PurchaseItem avengers = new PurchaseItem(1, "Avengers", "imageAven", "adventure");
-    private PurchaseItem frozen = new PurchaseItem(2, "Frozen", "imageSnow", "cartoon");
-    private PurchaseItem sing = new PurchaseItem(3, "Sing", "imageSing", "cartoon");
-    private PurchaseItem hangover = new PurchaseItem(4, "Hangover", "imageHangover", "comedy");
-    private PurchaseItem theEnd = new PurchaseItem(5, "TheEnd", "imageTheEnd", "comedy");
-    private PurchaseItem intouchables = new PurchaseItem(6, "Intouchables", "image1", "drama");
-    private PurchaseItem safeHouse = new PurchaseItem(7, "SafeHouse", "imageSaveHouse", "action");
-    private PurchaseItem lost = new PurchaseItem(8, "Lost", "imageLost", "thriller");
-    private PurchaseItem blitz = new PurchaseItem(9, "Blitz", "imageLost", "thriller");
-    private PurchaseItem help = new PurchaseItem(10, "Help", "imageHelp", "drama");
-    private PurchaseItem cash = new PurchaseItem(11, "Cash", "imageCash", "thriller");
+    private FilmItem avengers = new FilmItem(1, "Avengers", "imageAven", "adventure");
+    private FilmItem frozen = new FilmItem(2, "Frozen", "imageSnow", "cartoon");
+    private FilmItem sing = new FilmItem(3, "Sing", "imageSing", "cartoon");
+    private FilmItem hangover = new FilmItem(4, "Hangover", "imageHangover", "comedy");
+    private FilmItem theEnd = new FilmItem(5, "TheEnd", "imageTheEnd", "comedy");
+    private FilmItem intouchables = new FilmItem(6, "Intouchables", "image1", "drama");
+    private FilmItem safeHouse = new FilmItem(7, "SafeHouse", "imageSaveHouse", "action");
+    private FilmItem lost = new FilmItem(8, "Lost", "imageLost", "thriller");
+    private FilmItem blitz = new FilmItem(9, "Blitz", "imageLost", "thriller");
+    private FilmItem help = new FilmItem(10, "Help", "imageHelp", "drama");
+    private FilmItem cash = new FilmItem(11, "Cash", "imageCash", "thriller");
 
     @Test
     public void shouldAddFilmEmpty() {
-        PurchaseItem[] actual = filmManager.findAll();
-        PurchaseItem[] expected = new PurchaseItem[]{};
+        FilmItem[] actual = filmManager.findAll();
+        FilmItem[] expected = new FilmItem[]{};
         assertArrayEquals(actual, expected);
     }
 
     @Test
     public void shouldAddOneFilm() {
         filmManager.add(sing);
-        PurchaseItem[] actual = filmManager.findAll();
-        PurchaseItem[] expected = new PurchaseItem[]{sing};
+        FilmItem[] actual = filmManager.findAll();
+        FilmItem[] expected = new FilmItem[]{sing};
         assertArrayEquals(actual, expected);
     }
 
@@ -37,8 +37,8 @@ public class FilmManagerTest {
     public void shouldLastAddFilmNoOne() {
         FilmManager filmManager = new FilmManager(0);
         filmManager.getAll();
-        PurchaseItem[] actual = filmManager.getAll();
-        PurchaseItem[] expected = new PurchaseItem[]{};
+        FilmItem[] actual = filmManager.getAll();
+        FilmItem[] expected = new FilmItem[]{};
         assertArrayEquals(actual, expected);
     }
 
@@ -47,14 +47,13 @@ public class FilmManagerTest {
         FilmManager filmManager = new FilmManager(1);
         filmManager.add(avengers);
         filmManager.getAll();
-        PurchaseItem[] actual = filmManager.getAll();
-        PurchaseItem[] expected = new PurchaseItem[]{avengers};
+        FilmItem[] actual = filmManager.getAll();
+        FilmItem[] expected = new FilmItem[]{avengers};
         assertArrayEquals(actual, expected);
     }
 
     @Test
     public void shouldTenLastAddFilm() {
-       // FilmManager filmManager = new FilmManager(10);
         filmManager.add(frozen);
         filmManager.add(hangover);
         filmManager.add(sing);
@@ -66,12 +65,13 @@ public class FilmManagerTest {
         filmManager.add(avengers);
         filmManager.add(safeHouse);
         filmManager.getAll();
-        PurchaseItem[] actual = filmManager.getAll();
-        PurchaseItem[] expected = new PurchaseItem[]{
+        FilmItem[] actual = filmManager.getAll();
+        FilmItem[] expected = new FilmItem[]{
                 safeHouse,avengers, blitz, cash, help, intouchables, theEnd, sing, hangover, frozen
         };
         assertArrayEquals(actual, expected);
     }
+
 
     @Test
     public void shouldTenLastAddFilmInLimit() {
@@ -86,8 +86,8 @@ public class FilmManagerTest {
         filmManager.add(avengers);
         filmManager.add(safeHouse);
         filmManager.getAll();
-        PurchaseItem[] actual = filmManager.getAll();
-        PurchaseItem[] expected = new PurchaseItem[]{
+        FilmItem[] actual = filmManager.getAll();
+        FilmItem[] expected = new FilmItem[]{
                 safeHouse,avengers, blitz, cash, intouchables, safeHouse, sing, hangover, frozen
         };
         assertArrayEquals(actual, expected);
@@ -108,8 +108,8 @@ public class FilmManagerTest {
         filmManager.add(help);
         filmManager.add(theEnd);
         filmManager.getAll();
-        PurchaseItem[] actual = filmManager.getAll();
-        PurchaseItem[] expected = new PurchaseItem[]{
+        FilmItem[] actual = filmManager.getAll();
+        FilmItem[] expected = new FilmItem[]{
                 theEnd, help, safeHouse, avengers, blitz, cash, intouchables, safeHouse, sing, hangover
         };
         assertArrayEquals(actual, expected);

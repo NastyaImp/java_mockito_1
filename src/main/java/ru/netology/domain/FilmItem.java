@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 
-public class PurchaseItem {
+public class FilmItem {
     private int id;
     private String nameFilm;
     private String imageUrl;
